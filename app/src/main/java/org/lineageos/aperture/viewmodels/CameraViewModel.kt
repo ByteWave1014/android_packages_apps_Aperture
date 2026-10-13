@@ -1677,7 +1677,9 @@ class CameraViewModel(application: Application) : ApertureViewModel(application)
                     PhotoOutputFormat.RAW_JPEG
                 ) -> PhotoOutputFormat.RAW_JPEG
 
-                usePhotoJpegUltraHdr && camera.supportedPhotoOutputFormats.contains(
+                overlaysRepository.enableJpegUltraHdr
+                        && usePhotoJpegUltraHdr 
+                        && camera.supportedPhotoOutputFormats.contains(
                     PhotoOutputFormat.JPEG_ULTRA_HDR
                 ) -> PhotoOutputFormat.JPEG_ULTRA_HDR
 

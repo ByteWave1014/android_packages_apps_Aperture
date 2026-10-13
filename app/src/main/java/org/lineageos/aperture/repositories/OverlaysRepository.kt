@@ -130,6 +130,11 @@ class OverlaysRepository(private val context: Context) {
      */
     val enableHighResolution = getBoolean(R.bool.config_enableHighResolution)
 
+    /**
+     * @see R.bool.config_enableJpegUltraHdr
+     */
+    val enableJpegUltraHdr = getBoolean(R.bool.config_enableJpegUltraHdr)
+
     private fun getBoolean(id: Int) = rroResources.firstNotNullOfOrNull {
         runCatching {
             it.getBoolean(id)

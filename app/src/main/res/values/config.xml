@@ -84,4 +84,8 @@
     <!-- Whether we should use high resolution output size or not.
          See: StreamConfigurationMap.getHighResolutionOutputSizes() for more info. -->
     <bool name="config_enableHighResolution">true</bool>
+
+    <!-- Whether JPEG Ultra HDR may be selected for photo capture. Some camera HALs
+         advertise the format but cannot complete the required P010 + JPEG request. -->
+    <bool name="config_enableJpegUltraHdr">true</bool>
 </resources>
