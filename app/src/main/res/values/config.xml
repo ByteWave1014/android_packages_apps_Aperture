@@ -88,4 +88,7 @@
     <!-- Whether JPEG Ultra HDR may be selected for photo capture. Some camera HALs
          advertise the format but cannot complete the required P010 + JPEG request. -->
     <bool name="config_enableJpegUltraHdr">true</bool>
+
+    <!-- Maximum pixel count for JPEG Ultra HDR capture, or 0 for no limit. -->
+    <integer name="config_maxJpegUltraHdrPixels">0</integer>
 </resources>

@@ -44,6 +44,7 @@ import androidx.camera.core.ExperimentalZeroShutterLag
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.MirrorMode
 import androidx.camera.core.resolutionselector.AspectRatioStrategy
+import androidx.camera.core.resolutionselector.ResolutionFilter
 import androidx.camera.core.resolutionselector.ResolutionSelector
 import androidx.camera.extensions.ExtensionMode
 import androidx.camera.video.Quality
@@ -1533,7 +1534,18 @@ open class CameraActivity : AppCompatActivity(R.layout.activity_camera) {
                             } else {
                                 ResolutionSelector.PREFER_CAPTURE_RATE_OVER_HIGHER_RESOLUTION
                             }
-                        )
+                        ).apply {
+                            val maxPixels = cameraConfiguration.maxJpegUltraHdrPixels
+                            if (cameraConfiguration.photoOutputFormat ==
+                                PhotoOutputFormat.JPEG_ULTRA_HDR && maxPixels > 0
+                            ) {
+                                setResolutionFilter(ResolutionFilter { sizes, _ ->
+                                    sizes.filter {
+                                        it.width.toLong() * it.height <= maxPixels.toLong()
+                                    }
+                                })
+                            }
+                        }
                         .build()
 
                 CameraController.IMAGE_CAPTURE

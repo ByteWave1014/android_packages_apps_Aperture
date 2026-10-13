@@ -21,6 +21,8 @@ class OverlaysRepository(private val context: Context) {
 
         fun getBoolean(id: Int): Boolean = resources.getBoolean(getIdentifier(id))
 
+        fun getInteger(id: Int): Int = resources.getInteger(getIdentifier(id))
+
         fun getStringArray(id: Int): Array<String> = resources.getStringArray(getIdentifier(id))
 
         @Suppress("DiscouragedApi")
@@ -135,11 +137,22 @@ class OverlaysRepository(private val context: Context) {
      */
     val enableJpegUltraHdr = getBoolean(R.bool.config_enableJpegUltraHdr)
 
+    /**
+    * @see R.integer.config_maxJpegUltraHdrPixels
+     */
+    val maxJpegUltraHdrPixels = getInteger(R.integer.config_maxJpegUltraHdrPixels)
+
     private fun getBoolean(id: Int) = rroResources.firstNotNullOfOrNull {
         runCatching {
             it.getBoolean(id)
         }.getOrNull()
     } ?: context.resources.getBoolean(id)
+
+    private fun getInteger(id: Int) = rroResources.firstNotNullOfOrNull {
+        runCatching {
+            it.getInteger(id)
+        }.getOrNull()
+    } ?: context.resources.getInteger(id)
 
     private fun getStringArray(id: Int) = rroResources.firstNotNullOfOrNull {
         runCatching {

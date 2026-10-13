@@ -83,6 +83,7 @@ sealed interface CameraConfiguration {
         val photoCaptureMode: Int,
         val photoAspectRatio: Int,
         val enableHighResolution: Boolean,
+        val maxJpegUltraHdrPixels: Int,
         val photoOutputFormat: PhotoOutputFormat,
     ) : CameraConfiguration {
         override val cameraMode = CameraMode.PHOTO

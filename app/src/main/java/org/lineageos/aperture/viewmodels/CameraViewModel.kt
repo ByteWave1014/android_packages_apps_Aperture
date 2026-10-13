@@ -1693,6 +1693,7 @@ class CameraViewModel(application: Application) : ApertureViewModel(application)
                 photoCaptureMode = photoCaptureMode,
                 photoAspectRatio = preferencesRepository.photoAspectRatio.value,
                 enableHighResolution = overlaysRepository.enableHighResolution,
+                maxJpegUltraHdrPixels = overlaysRepository.maxJpegUltraHdrPixels,
                 photoOutputFormat = photoOutputFormat,
             )
         }
